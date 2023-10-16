@@ -6,15 +6,23 @@
   list-style: none;
 }
 
+:root {
+  --blue-navbar: #234a82;
+  --light-orange: #f3b716;
+  --dark-orange: #f08e00;
+  --light-blue: #03cbf0;
+  --dark-blue: #234a82;
+}
+
 body {
-  background-color: #f08e00;
+  background-color: ;
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: #234a82;
+  background-color: var(--blue-navbar);
   width: 100%;
   height: 100px;
 }
@@ -41,6 +49,8 @@ body {
   align-items: center;
   justify-content: center;
   max-width: 1200px;
+  gap: 1rem;
+  padding: 2rem;
 }
 
 .hero-container {
@@ -49,8 +59,13 @@ body {
   justify-content: center;
   flex-direction: column;
   width: 50%;
-  height: 200px;
-  background-color: #f3b716;
+  height: 100vh;
+  /* border: solid 2px var(--dark-orange);
+  border-radius: 10px; */
+}
+
+.img-hero {
+  height: 100%;
 }
 
 .hero-info {
@@ -61,7 +76,8 @@ body {
   justify-content: center;
   width: 50%;
   height: 200px;
-  background-color: #f3b716;
+  border: solid 2px var(--dark-orange);
+  border-radius: 10px;
 }
 
 #about-us {
@@ -70,7 +86,7 @@ body {
   justify-content: center;
   max-width: 1200px;
   padding: 1rem;
-  background-color: #03cbf0;
+  background-color: ;
   width: 100%;
 }
 
@@ -78,6 +94,6 @@ body {
   display: flex;
   max-width: 1200px;
   width: 100%;
-  background-color: #234a82;
+  background-color: ;
   height: 100px;
 }
