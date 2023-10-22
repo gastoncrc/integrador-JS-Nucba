@@ -15,15 +15,15 @@
   --dark-blue: #234a82;
 }
 
-/* body {
-  background-color: ;
-} */
+body {
+  background: linear-gradient(to right, #6fa1ff, #0067ec);
+}
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: var(--blue-navbar);
+
   width: 100%;
   height: 100px;
 }
@@ -49,46 +49,65 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1200px;
+  width: 100%;
+  height: 100vh;
   gap: 1rem;
   padding: 2rem;
+  /* background: linear-gradient(to right, #6fa1ff, #0067ec); */
+  background-image: url(./img/campo-cesped.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
 }
 
 .hero-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  width: 50%;
-  height: 100vh;
-  /* border: solid 2px var(--dark-orange);
-  border-radius: 10px; */
-}
-
-.img-hero {
+  max-width: 1200px;
   height: 100%;
 }
 
 .hero-info {
   display: flex;
-  flex-direction: column;
   padding: 1rem;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  height: 200px;
+  width: 80%;
+  height: 60%;
+  gap: 2rem;
   border: solid 2px var(--dark-orange);
   border-radius: 10px;
+}
+
+.hero-info-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.img-hero {
+  height: 150px;
+}
+
+.hero-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  height: 40%;
 }
 
 #about-us {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1200px;
   padding: 1rem;
-  /* background-color: red; */
-  width: 1200px;
+  background-color: red;
+  height: 100vh;
   gap: 3rem;
 }
 
@@ -99,8 +118,9 @@
   justify-content: center;
   padding: 1rem;
   gap: 2rem;
+  max-width: 1200px;
   width: 40%;
-  /* background-color: #234a82; */
+  background-color: #234a82;
 }
 
 .about-us-img {
@@ -110,19 +130,25 @@
 
 #products {
   display: flex;
-  max-width: 1200px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  /* background-color: ; */
-  height: 100px;
+  height: 100vh;
+  background-color: #03cbf0;
+  gap: 2rem;
+}
+
+.navbar-categories ul {
+  display: flex;
+  gap: 2rem;
 }
 
 .cards-container {
-  /* background-color: #03cbf0; */
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1200px;
-  height: 400px;
+  max-width: 1200px;
   gap: 4rem;
 }
 
@@ -150,4 +176,17 @@
   justify-content: space-between;
   width: 150px;
   background-color: #f08e00;
+}
+
+#footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50vh;
+  background-color: #83cbf7;
+}
+
+.footer-container {
+  display: flex;
 }
