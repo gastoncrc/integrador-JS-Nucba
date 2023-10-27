@@ -7,7 +7,7 @@
   text-decoration: none;
   list-style: none;
   font-family: "poppins", "montserrat", "sanz serif";
-  /* border: solid red 1px; */
+  border: solid red 1px;
 }
 
 :root {
@@ -86,16 +86,20 @@
   /* background-color: #234a82; */
 }
 
+.hero-top {
+  display: flex;
+}
+
+.top-left {
+  width: 50%;
+}
+
 .hero-title {
-  margin-left: 50%;
+  width: 50%;
   font-size: 3.5rem;
 }
-/* .title-span-top,
-.title-span-bottom {
-  display: block;
-} */
 
-.hero-icons {
+.hero-buttom {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,7 +163,7 @@
   justify-content: center;
   width: 100%;
   height: 100vh;
-  background-color: #03cbf0;
+  background-color: white;
   gap: 2rem;
 }
 
@@ -177,7 +181,7 @@
 }
 
 .card {
-  background-color: #234a82;
+  background-color: #f2f4f7;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -196,9 +200,11 @@
 
 .card-buttom {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   width: 150px;
+  gap: 1rem;
   background-color: #f08e00;
 }
 
