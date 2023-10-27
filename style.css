@@ -112,7 +112,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1rem 1rem 0;
   /* background-color: red; */
   height: 100vh;
   gap: 2rem;
@@ -130,9 +130,26 @@
   /* background-color: #234a82; */
 }
 
+.about-us-title {
+  font-size: 4rem;
+}
+
+.about-us-info {
+  font-size: 18px;
+}
+
+.about-info-span {
+  font-weight: 700;
+}
+
 .about-us-img {
   width: 500px;
-  border-radius: 3rem 0;
+  border-radius: 300% 0 0 300%;
+  height: 75vh;
+  background-image: url(./img/2534739.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #products {
