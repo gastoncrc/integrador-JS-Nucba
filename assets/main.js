@@ -12,14 +12,14 @@ const counterBubble = document.querySelector(".counter-bubble");
 const btnEmptyCart = document.querySelector(".btn-cart-delete");
 
 let cart = [];
-
+// -----------------------------------------------------------------CARDS-----------------------------------------------------
 // -----------------------------------------ARRAY DE PRODUCTOS
-// BUSCA CADA OBJETO DEL ARRAY DE PRODUCTOS
+//---------------------------------------- BUSCA CADA OBJETO DEL ARRAY DE PRODUCTOS
 const createCards = (array) => {
   array.map(renderCard);
 };
 
-// RENDERIZAR LA CARD
+// ------------------------------------------RENDERIZAR LA CARD
 const renderCard = (product) => {
   const { id, nombre, precio, marca, imagen } = product;
   cardsContainer.innerHTML += `
@@ -37,7 +37,7 @@ const renderCard = (product) => {
               <button class="btn-add-cart" data-id=${id}>Agregar</button>
           </div>`;
 };
-
+// ---------------------------------------------------------------CATEGORIAS ------------------------------------------------------
 // -------------------------------------------ARRAY DE CATEGORIAS
 // RECORRE EL ARRAY DE CATEGORIAS
 const createCategories = () => {
@@ -67,8 +67,8 @@ const handleCategory = (e) => {
   cardsContainer.innerHTML = "";
   createCards(categorySelected);
 };
-
-// -----------------------------------------TOGGLE CART---
+// ----------------------------------------------------------------------CART--------------------------------------------------------
+// ---------------------------------TOGGLE CART
 const togleCart = () => {
   if (cartToggle.classList.contains("togle-close-cart")) {
     cartToggle.classList.remove("togle-close-cart");
@@ -77,6 +77,7 @@ const togleCart = () => {
   }
 };
 
+// --------------------------------AGREGAR AL CARRITO
 const addToCart = (e) => {
   const idProduct = Number(e.target.dataset.id);
   const cardSelected = () => {
@@ -93,52 +94,59 @@ const createPorductsCart = (cart) => {
   cart.map(renderCartProduct);
 };
 
+// ---------------------------------RENDERIZAR PROCUTOS EN CART
 const renderCartProduct = (product) => {
   const { nombre, precio, marca, imagen } = product;
   cartMenu.innerHTML += `
-             <div class="cart-product">
+          <div class="cart-product">
              <div class="cart-product-content">
                 <div class="img-cart-container">
                   <img
                   src=${imagen}
                     class="cart-img"
                     />
-                    </div>
-                    <div class="info-cart-container">
+                </div>
+                <div class="info-cart-container">
                   <h3>${nombre}</h3>
                   <span>${marca}</span>
                   <p>${precio}</p>
-                  </div>
+                </div>
               </div>
               <div class="total-product-container">
                 <div class="plus-minus-container">
-                <span>-</span>
+                  <span>-</span>
                   <span>5</span>
                   <span>+</span>
                 </div>
                 <p>subtotal</p>
-                </div>
-                <div class="product-delete">
-                <button>X</button>
-                </div>
-                </div>
+              </div>
+              <button class="fa fa-trash">
+              </button>
+          </div>
                 `;
 };
 
-// BURBUJA CON VALOR
+// ---------------------------------------------------------------BURBUJA CON VALOR---------------------------------------------------
 const counterItemsCart = (cart) => {
   const lenghtCart = cart.length;
   counterBubble.textContent = lenghtCart;
 };
 
-// VACIAR CARRITO
+// -----------------------------------------------------------------VACIAR CARRITO----------------------------------------------------
+// ----------------------------------------------VACIAR TODO EL CARRITO
 const emptyCart = () => {
   cart = [];
   cartMenu.innerHTML = "";
   counterItemsCart(cart);
 };
 
-//---------------------------------------------- INICIAR --------------
+// ---------------------------------------------VACIAR UN ITEM DEL CARRITO
+
+const deleteProduct = () => {
+  console.log("hola");
+};
+
+//------------------------------------------------------------------- INICIAR ----------------------------------------------------------
 const init = () => {
   createCategories();
   createCards(products);
@@ -153,5 +161,10 @@ const init = () => {
   );
   counterItemsCart(cart);
   btnEmptyCart.addEventListener("click", emptyCart);
+  // const deleteProductArray = [...cartMenu.children];
+  // deleteProductArray.map((product) =>
+  //   product.childNodes[3].addEventListener("click", deleteProduct)
+  // );
+  // console.log(deleteProductArray);
 };
 init();

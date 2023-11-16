@@ -18,6 +18,7 @@
   --light-blue: #03cbf0;
   --dark-blue: #234a82;
   --red-levis: #a30716;
+  --red-transparent: #cf0e11ac;
 }
 
 .navbar {
@@ -29,12 +30,18 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  height: 100px;
-  /* background: rgba(0, 0, 0, 0.274); */
+  height: 70px;
+  background-color: var(--red-transparent);
+}
+
+.link-logo-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo-navbar {
-  width: 150px;
+  width: 120px;
 }
 
 .navbar-list {
@@ -42,9 +49,14 @@
   gap: 2rem;
 }
 
+.btn-login {
+  font-size: 1.5rem;
+}
+
 .btn-cart {
   font-size: 1.5rem;
   position: relative;
+  cursor: pointer;
 }
 
 .counter-bubble {
@@ -68,10 +80,10 @@
   /* justify-content: center; */
   position: absolute;
   right: 0px;
-  top: 100px;
+  top: 70px;
   width: 400px;
   height: 100vh;
-  background-color: #f08e00;
+  background-color: var(--red-transparent);
   padding: 1rem;
   gap: 1rem;
   transition: 0.5s;
@@ -86,9 +98,11 @@
   flex-direction: column;
   width: 100%;
   height: 40vh;
-  background-color: rgb(113, 162, 6);
+  background-color: white;
   gap: 0.5rem;
   overflow-y: auto;
+  padding: 0.3rem;
+  border-radius: 10px;
   /* justify-content: center; */
 }
 
@@ -98,7 +112,9 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  border-radius: 10px;
   background-color: #03cbf0;
+  padding: 0 0.3rem;
 }
 
 .cart-product-content {
@@ -259,6 +275,7 @@
   /* background-color: red; */
   height: 100vh;
   gap: 2rem;
+  padding-top: 80px;
 }
 
 .about-us-container {
@@ -308,6 +325,7 @@
   background-repeat: no-repeat;
   background-position: center;
   gap: 2rem;
+  padding-top: 80px;
 }
 
 .navbar-categories {
@@ -416,6 +434,7 @@
   /* background-color: green; */
   height: 100vh;
   gap: 2rem;
+  padding-top: 80px;
 }
 
 .contact-us-container {

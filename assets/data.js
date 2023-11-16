@@ -1,7 +1,7 @@
 export const products = [
   {
     id: 1,
-    nombre: "Chuck Taylor All Star Platform Leather",
+    nombre: "Chuck Taylor",
     precio: 500,
     marca: "Converse",
     categoria: ["Zapatillas", "Adultos", "Converse", "Mujeres", "Hombres"],
@@ -10,7 +10,7 @@ export const products = [
 
   {
     id: 2,
-    nombre: "Camiseta de ajuste estándar Converse Go-To All Star Patch",
+    nombre: "Go-To All Star Patch",
     precio: 1500,
     marca: "Converse",
     categoria: ["Remeras", "Converse", "Adultos", "Hombres", "Mujeres"],
@@ -19,7 +19,7 @@ export const products = [
 
   {
     id: 3,
-    nombre: "Converse Go-To All Star Patch Standard-Fit Fleece Sweatpants",
+    nombre: "Standard-Fit Fleece Sweatpants",
     precio: 1380,
     marca: "Converse",
     categoria: ["Pantalones", "Adultos", "Converse", "Hombres", "Mujeres"],
@@ -63,7 +63,7 @@ export const products = [
 
   {
     id: 8,
-    nombre: "Converse Go-To All Star Patch Standard-Fit Fleece Sweatpants",
+    nombre: "Patch Standard-Fit Fleece Sweatpants",
     precio: 1380,
     marca: "Vans",
     categoria: ["Pantalones", "Adultos", "Vans"],
@@ -72,7 +72,7 @@ export const products = [
 
   {
     id: 9,
-    nombre: "Chaqueta acolchada con bolsillo tipo parche",
+    nombre: "Chaqueta acolchada con bolsillo",
     precio: 1000,
     marca: "Vans",
     categoria: ["Camperas", "Adultos", "Vans"],
