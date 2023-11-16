@@ -42,6 +42,25 @@
   gap: 2rem;
 }
 
+.btn-cart {
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.counter-bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: white;
+  font-size: 10px;
+  top: 0;
+  right: -6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+}
+
 .cart-container {
   display: flex;
   flex-direction: column;

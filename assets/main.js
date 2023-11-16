@@ -8,6 +8,8 @@ const categoriesList = document.querySelector(".categories-list");
 const btnCart = document.querySelector(".btn-cart");
 const cartToggle = document.querySelector(".cart-container");
 const cartMenu = document.querySelector(".cart-products");
+const counterBubble = document.querySelector(".counter-bubble");
+const btnEmptyCart = document.querySelector(".btn-cart-delete");
 
 let cart = [];
 
@@ -84,6 +86,7 @@ const addToCart = (e) => {
   cart.push(cartProduct);
   cartMenu.innerHTML = "";
   createPorductsCart(cart);
+  counterItemsCart(cart);
 };
 
 const createPorductsCart = (cart) => {
@@ -91,7 +94,6 @@ const createPorductsCart = (cart) => {
 };
 
 const renderCartProduct = (product) => {
-  console.log(cart);
   const { nombre, precio, marca, imagen } = product;
   cartMenu.innerHTML += `
              <div class="cart-product">
@@ -122,6 +124,20 @@ const renderCartProduct = (product) => {
                 </div>
                 `;
 };
+
+// BURBUJA CON VALOR
+const counterItemsCart = (cart) => {
+  const lenghtCart = cart.length;
+  counterBubble.textContent = lenghtCart;
+};
+
+// VACIAR CARRITO
+const emptyCart = () => {
+  cart = [];
+  cartMenu.innerHTML = "";
+  counterItemsCart(cart);
+};
+
 //---------------------------------------------- INICIAR --------------
 const init = () => {
   createCategories();
@@ -135,5 +151,7 @@ const init = () => {
   cardsArray.map((card) =>
     card.childNodes[5].addEventListener("click", addToCart)
   );
+  counterItemsCart(cart);
+  btnEmptyCart.addEventListener("click", emptyCart);
 };
 init();
