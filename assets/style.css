@@ -42,6 +42,124 @@
   gap: 2rem;
 }
 
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  position: absolute;
+  right: 0px;
+  top: 100px;
+  width: 400px;
+  height: 100vh;
+  background-color: #f08e00;
+  padding: 1rem;
+  gap: 1rem;
+  transition: 0.5s;
+}
+
+.togle-close-cart {
+  right: -400px;
+}
+
+.cart-products {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 40vh;
+  background-color: rgb(113, 162, 6);
+  gap: 0.5rem;
+  overflow-y: auto;
+  /* justify-content: center; */
+}
+
+.cart-product {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: #03cbf0;
+}
+
+.cart-product-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 70%;
+}
+
+.img-cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+}
+
+.cart-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.total-product-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-cart-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: start; */
+}
+
+.info-cart-container h3 {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.info-cart-container span {
+  font-size: 12px;
+}
+
+.info-cart-container p {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.plus-minus-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  background-color: #03cbf0;
+}
+
+.cart-price {
+  display: flex;
+  justify-content: center;
+  background-color: crimson;
+}
+
+.btn-cart-buy {
+  width: 90%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #3d71bb;
+}
+
+.btn-cart-delete {
+  width: 90%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: blueviolet;
+}
+
 #main {
   display: flex;
   flex-direction: column;
@@ -242,7 +360,7 @@
   font-size: 13px;
 }
 
-.card-buttom {
+.card-button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -251,11 +369,11 @@
   gap: 1rem;
 }
 
-.card-buttom h3 {
+.card-button h3 {
   font-size: 1rem;
 }
 
-.btn-card {
+.btn-add-cart {
   border-radius: 20px;
   background-color: #234a82;
   padding: 7px 36px;
@@ -266,7 +384,7 @@
   -moz-box-shadow: -1px 7px 12px -1px rgba(0, 0, 0, 0.64);
 }
 
-.btn-card:hover {
+.btn-add-cart:hover {
   background-color: #3d71bb;
 }
 
