@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  height: 70px;
+  height: 60px;
   background-color: var(--red-transparent);
 }
 
@@ -41,7 +41,7 @@
 }
 
 .logo-navbar {
-  width: 120px;
+  width: 110px;
 }
 
 .navbar-list {
@@ -80,13 +80,17 @@
   /* justify-content: center; */
   position: absolute;
   right: 0px;
-  top: 70px;
+  top: 60px;
   width: 400px;
   height: 100vh;
   background-color: var(--red-transparent);
   padding: 1rem;
   gap: 1rem;
   transition: 0.5s;
+}
+
+.cart-container h2 {
+  color: white;
 }
 
 .togle-close-cart {
@@ -185,14 +189,14 @@
   width: 90%;
   height: 40px;
   border-radius: 10px;
-  background-color: #3d71bb;
+  background-color: #4a72a8;
 }
 
 .btn-cart-delete {
   width: 90%;
   height: 40px;
   border-radius: 10px;
-  background-color: blueviolet;
+  background-color: crimson;
 }
 
 #main {
@@ -275,7 +279,7 @@
   /* background-color: red; */
   height: 100vh;
   gap: 2rem;
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 .about-us-container {
@@ -325,7 +329,7 @@
   background-repeat: no-repeat;
   background-position: center;
   gap: 2rem;
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 .navbar-categories {
@@ -335,6 +339,7 @@
   background-color: white;
   width: 100%;
   height: 50px;
+  background: linear-gradient(var(--red-transparent), red);
   box-shadow: -1px 7px 12px -1px rgba(0, 0, 0, 0.64);
   -webkit-box-shadow: -1px 7px 12px -1px rgba(0, 0, 0, 0.64);
   -moz-box-shadow: -1px 7px 12px -1px rgba(0, 0, 0, 0.64);
@@ -345,6 +350,21 @@
   flex-wrap: wrap;
   gap: 1.5rem;
   max-width: 1200px;
+}
+
+.btn-category {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.852);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.btn-category:hover {
+  color: rgb(0, 0, 0);
+  font-weight: 400;
+  transition: 0.4s;
 }
 
 .cards-container {
@@ -434,7 +454,7 @@
   /* background-color: green; */
   height: 100vh;
   gap: 2rem;
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 .contact-us-container {

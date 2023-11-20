@@ -10,6 +10,7 @@ const cartToggle = document.querySelector(".cart-container");
 const cartMenu = document.querySelector(".cart-products");
 const counterBubble = document.querySelector(".counter-bubble");
 const btnEmptyCart = document.querySelector(".btn-cart-delete");
+const cartProduct = document.querySelector(".cart-product");
 
 let cart = [];
 // -----------------------------------------------------------------CARDS-----------------------------------------------------
@@ -84,8 +85,13 @@ const addToCart = (e) => {
     return products.find((product) => product.id === idProduct);
   };
   const cartProduct = cardSelected();
-  cart.push(cartProduct);
+  if (isExistingCartProduct(idProduct)) {
+    addQuantity(cartProduct);
+  } else {
+    cart.push(cartProduct);
+  }
   cartMenu.innerHTML = "";
+
   createPorductsCart(cart);
   counterItemsCart(cart);
 };
@@ -94,9 +100,18 @@ const createPorductsCart = (cart) => {
   cart.map(renderCartProduct);
 };
 
+// -------------------------------------------EXISTE EL PRODUCTO
+const isExistingCartProduct = (idProduct) => {
+  return cart.some((product) => product.id === idProduct);
+};
+// ---------------------------------------AGREGAR CANTIDAD AL PRODUCTO DEL CART
+const addQuantity = (cartProduct) => {
+  cartProduct.cantidad++;
+};
+
 // ---------------------------------RENDERIZAR PROCUTOS EN CART
 const renderCartProduct = (product) => {
-  const { nombre, precio, marca, imagen } = product;
+  const { id, nombre, precio, marca, imagen, cantidad } = product;
   cartMenu.innerHTML += `
           <div class="cart-product">
              <div class="cart-product-content">
@@ -115,12 +130,12 @@ const renderCartProduct = (product) => {
               <div class="total-product-container">
                 <div class="plus-minus-container">
                   <span>-</span>
-                  <span>5</span>
+                  <span>${cantidad}</span>
                   <span>+</span>
                 </div>
                 <p>subtotal</p>
               </div>
-              <button class="fa fa-trash">
+              <button class="fa fa-trash" data-cantidad="${cantidad}" data-id="${id}">
               </button>
           </div>
                 `;
@@ -142,29 +157,59 @@ const emptyCart = () => {
 
 // ---------------------------------------------VACIAR UN ITEM DEL CARRITO
 
-const deleteProduct = () => {
-  console.log("hola");
+const deleteProduct = (e) => {
+  const idProductCart = Number(e.target.dataset.id);
+  const quantityProduct = Number(e.target.dataset.cantidad);
+
+  // VER------------------------------------
+  // console.log(quantityCart);
+  const quantityRgfhget = cart.filter(
+    (product) => product.cantidad === quantityProduct
+  );
+
+  // VER -------------------------------------
+
+  const productFiltered = cart.filter(
+    (product) => product.id !== idProductCart
+  );
+  cartMenu.innerHTML = "";
+  cart = [...productFiltered];
+  createPorductsCart(cart);
+  counterItemsCart(cart);
 };
 
 //------------------------------------------------------------------- INICIAR ----------------------------------------------------------
 const init = () => {
   createCategories();
   createCards(products);
+
   const categoriesListArray = [...categoriesList.children];
   categoriesListArray.map((btn) =>
     btn.addEventListener("click", handleCategory)
   );
   btnCart.addEventListener("click", togleCart);
+
   const cardsArray = [...cardsContainer.children];
   cardsArray.map((card) =>
     card.childNodes[5].addEventListener("click", addToCart)
   );
   counterItemsCart(cart);
   btnEmptyCart.addEventListener("click", emptyCart);
-  // const deleteProductArray = [...cartMenu.children];
-  // deleteProductArray.map((product) =>
-  //   product.childNodes[3].addEventListener("click", deleteProduct)
-  // );
-  // console.log(deleteProductArray);
+
+  cartMenu.addEventListener("click", deleteProduct);
 };
 init();
+// REVISAR
+// cartMenu.addEventListener("click", (event) => {
+//   if (event.target.classList.contains("fa-trash")) {
+//     deleteProduct(event);
+//   }
+// });
+// const deleteProductArray = [...cartMenu.children];
+// console.log(deleteProductArray);
+// deleteProductArray.map((product) =>
+//   product.childNodes[2].addEventListener("click", deleteProduct)
+// );
+// console.log(cartMenu.childNodes[3]);
+// console.log(deleteProductArray);
+// console.log(cartMenu.children);

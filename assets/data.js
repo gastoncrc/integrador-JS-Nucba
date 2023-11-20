@@ -6,6 +6,7 @@ export const products = [
     marca: "Converse",
     categoria: ["Zapatillas", "Adultos", "Converse", "Mujeres", "Hombres"],
     imagen: "./assets/img/products/converse-id1.jpg",
+    cantidad: 1,
   },
 
   {
@@ -15,6 +16,7 @@ export const products = [
     marca: "Converse",
     categoria: ["Remeras", "Converse", "Adultos", "Hombres", "Mujeres"],
     imagen: "./assets/img/products/converse-id2.jpg",
+    cantidad: 1,
   },
 
   {
@@ -24,6 +26,7 @@ export const products = [
     marca: "Converse",
     categoria: ["Pantalones", "Adultos", "Converse", "Hombres", "Mujeres"],
     imagen: "./assets/img/products/converse-id3.jpg",
+    cantidad: 1,
   },
 
   {
@@ -33,6 +36,7 @@ export const products = [
     marca: "Converse",
     categoria: ["Camperas", "Adultos", "Converse"],
     imagen: "./assets/img/products/converse-id4.jpg",
+    cantidad: 1,
   },
 
   {
@@ -42,6 +46,7 @@ export const products = [
     marca: "Converse",
     categoria: ["Camisas", "Niños", "Converse"],
     imagen: "./assets/img/products/vans-id5.jpg",
+    cantidad: 1,
   },
   {
     id: 6,
@@ -50,6 +55,7 @@ export const products = [
     marca: "Vans",
     categoria: ["Zapatillas", "Adultos", "Vans"],
     imagen: "./assets/img/products/vans-id6.jpg",
+    cantidad: 1,
   },
 
   {
@@ -59,6 +65,7 @@ export const products = [
     marca: "Vans",
     categoria: ["Remeras", "Vans", "Adultos"],
     imagen: "./assets/img/products/vans-id7.jpg",
+    cantidad: 1,
   },
 
   {
@@ -68,6 +75,7 @@ export const products = [
     marca: "Vans",
     categoria: ["Pantalones", "Adultos", "Vans"],
     imagen: "./assets/img/products/converse-id1.jpg",
+    cantidad: 1,
   },
 
   {
@@ -77,6 +85,7 @@ export const products = [
     marca: "Vans",
     categoria: ["Camperas", "Adultos", "Vans"],
     imagen: "./assets/img/products/converse-id1.jpg",
+    cantidad: 1,
   },
 
   {
@@ -86,6 +95,7 @@ export const products = [
     marca: "Vans",
     categoria: ["Camisas", "Niños", "Vans"],
     imagen: "./assets/img/products/converse-id1.jpg",
+    cantidad: 1,
   },
 ];
 
