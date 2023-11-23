@@ -99,6 +99,24 @@ export const products = [
   },
 ];
 
+// DIVIDÍ EL ARRAY EN PEQUEÑOS ARRAYS DE PRODUCTOS -------
+const divideProductsInParts = (size) => {
+  let arrayProducts = [];
+
+  for (let i = 0; i < products.length; i += size) {
+    arrayProducts.push(products.slice(i, i + size));
+  }
+  return arrayProducts;
+};
+
+export const appState = {
+  products: divideProductsInParts(8),
+  currentIndex: 0,
+  indexLimit: divideProductsInParts(8).length,
+  activeCategory: null,
+};
+// console.log(appState);
+
 export const categories = [
   "Pantalones",
   "Zapatillas",

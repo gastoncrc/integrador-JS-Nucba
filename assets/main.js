@@ -1,9 +1,11 @@
 // IMPORTO EL ARRAY DE PRODUCTOS DESDE OTRO ARCHIVO
 import { products } from "./data.js";
+import { appState } from "./data.js";
 import { categories } from "./data.js";
 
 // TRAIGO LOS ELEMENOS DEL DOM
 const cardsContainer = document.querySelector(".cards-container");
+const btnNextProducts = document.querySelector(".btn-next-products");
 const categoriesList = document.querySelector(".categories-list");
 const btnCart = document.querySelector(".btn-cart");
 const cartToggle = document.querySelector(".cart-container");
@@ -15,15 +17,10 @@ const cartProduct = document.querySelector(".cart-product");
 let cart = [];
 // -----------------------------------------------------------------CARDS-----------------------------------------------------
 // -----------------------------------------ARRAY DE PRODUCTOS
-//---------------------------------------- BUSCA CADA OBJETO DEL ARRAY DE PRODUCTOS
-const createCards = (array) => {
-  array.map(renderCard);
-};
-
 // ------------------------------------------RENDERIZAR LA CARD
 const renderCard = (product) => {
   const { id, nombre, precio, marca, imagen } = product;
-  cardsContainer.innerHTML += `
+  return `
            <div class="card">
             <img
              src=${imagen}
@@ -38,6 +35,23 @@ const renderCard = (product) => {
               <button class="btn-add-cart" data-id=${id}>Agregar</button>
           </div>`;
 };
+//---------------------------------------- BUSCA CADA OBJETO DEL ARRAY DE PRODUCTOS
+const createCards = (arrayProducts) => {
+  // arrayProducts.map(renderCard);
+  cardsContainer.innerHTML += arrayProducts.map(renderCard).join("");
+};
+
+// MOSTRAS MAS PRODUCTOS----------------------------
+const showNextCards = () => {
+  appState.currentIndex += 1;
+  console.log(appState.currentIndex);
+  // para sacar el boton al fin del array
+  createCards(appState.products[appState.currentIndex]);
+  if (appState.currentIndex === appState.indexLimit - 1) {
+    btnNextProducts.classList.add("hidden");
+  }
+};
+
 // ---------------------------------------------------------------CATEGORIAS ------------------------------------------------------
 // -------------------------------------------ARRAY DE CATEGORIAS
 // RECORRE EL ARRAY DE CATEGORIAS
@@ -181,7 +195,8 @@ const deleteProduct = (e) => {
 //------------------------------------------------------------------- INICIAR ----------------------------------------------------------
 const init = () => {
   createCategories();
-  createCards(products);
+  createCards(appState.products[0]);
+  btnNextProducts.addEventListener("click", showNextCards);
 
   const categoriesListArray = [...categoriesList.children];
   categoriesListArray.map((btn) =>
