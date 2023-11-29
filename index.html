@@ -73,9 +73,11 @@
 
           <div class="cart-total">
             <p>Total</p>
-            <span class="cart-price">55 peso</span>
+            <p class="cart-price-container">
+              $<span class="cart-price"></span>
+            </p>
           </div>
-          <button class="btn-cart-buy">Comprar</button>
+          <button class="btn-cart-buy" disabled>Comprar</button>
           <button class="btn-cart-delete">Vaciar</button>
         </div>
         <!-- ----------------------------- -->
@@ -140,7 +142,36 @@
       </section>
       <section id="products">
         <div class="navbar-categories">
-          <ul class="categories-list"></ul>
+          <div class="categories-list">
+            <button class="btn-category btn-active" data-category="todos">
+              Todos
+            </button>
+            <button class="btn-category" data-category="pantalones">
+              Pantalones
+            </button>
+            <button class="btn-category" data-category="zapatillas">
+              Zapatillas
+            </button>
+            <button class="btn-category" data-category="remeras">
+              Remeras
+            </button>
+            <button class="btn-category" data-category="camisas">
+              Camisas
+            </button>
+            <button class="btn-category" data-category="camperas">
+              Camperas
+            </button>
+            <button class="btn-category" data-category="adultos">
+              Adultos
+            </button>
+            <button class="btn-category" data-category="niños">Niños</button>
+            <button class="btn-category" data-category="hombres">
+              Hombres
+            </button>
+            <button class="btn-category" data-category="mujeres">
+              Mujeres
+            </button>
+          </div>
         </div>
         <div class="cards-container">
           <!-- <div class="card">

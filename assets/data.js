@@ -4,9 +4,8 @@ export const products = [
     nombre: "Chuck Taylor",
     precio: 500,
     marca: "Converse",
-    categoria: ["Zapatillas", "Adultos", "Converse", "Mujeres", "Hombres"],
+    categorias: ["Zapatillas", "Adultos", "Converse", "Mujeres", "Hombres"],
     imagen: "./assets/img/products/converse-id1.jpg",
-    cantidad: 1,
   },
 
   {
@@ -14,9 +13,8 @@ export const products = [
     nombre: "Go-To All Star Patch",
     precio: 1500,
     marca: "Converse",
-    categoria: ["Remeras", "Converse", "Adultos", "Hombres", "Mujeres"],
+    categorias: ["Remeras", "Converse", "Adultos", "Hombres", "Mujeres"],
     imagen: "./assets/img/products/converse-id2.jpg",
-    cantidad: 1,
   },
 
   {
@@ -24,9 +22,8 @@ export const products = [
     nombre: "Standard-Fit Fleece Sweatpants",
     precio: 1380,
     marca: "Converse",
-    categoria: ["Pantalones", "Adultos", "Converse", "Hombres", "Mujeres"],
+    categorias: ["Pantalones", "Adultos", "Converse", "Hombres", "Mujeres"],
     imagen: "./assets/img/products/converse-id3.jpg",
-    cantidad: 1,
   },
 
   {
@@ -34,9 +31,8 @@ export const products = [
     nombre: "Chaqueta acolchada con bolsillo tipo parche",
     precio: 1000,
     marca: "Converse",
-    categoria: ["Camperas", "Adultos", "Converse"],
+    categorias: ["Camperas", "Adultos", "Converse"],
     imagen: "./assets/img/products/converse-id4.jpg",
-    cantidad: 1,
   },
 
   {
@@ -44,18 +40,16 @@ export const products = [
     nombre: "Flannel Woven Top",
     precio: 600,
     marca: "Converse",
-    categoria: ["Camisas", "Niños", "Converse"],
+    categorias: ["Camisas", "Niños", "Converse"],
     imagen: "./assets/img/products/vans-id5.jpg",
-    cantidad: 1,
   },
   {
     id: 6,
     nombre: "U OLD SKOOL",
     precio: 500,
     marca: "Vans",
-    categoria: ["Zapatillas", "Adultos", "Vans"],
+    categorias: ["Zapatillas", "Adultos", "Vans"],
     imagen: "./assets/img/products/vans-id6.jpg",
-    cantidad: 1,
   },
 
   {
@@ -63,9 +57,8 @@ export const products = [
     nombre: "Remera Vans Classic",
     precio: 1500,
     marca: "Vans",
-    categoria: ["Remeras", "Vans", "Adultos"],
+    categorias: ["Remeras", "Vans", "Adultos"],
     imagen: "./assets/img/products/vans-id7.jpg",
-    cantidad: 1,
   },
 
   {
@@ -73,9 +66,8 @@ export const products = [
     nombre: "Patch Standard-Fit Fleece Sweatpants",
     precio: 1380,
     marca: "Vans",
-    categoria: ["Pantalones", "Adultos", "Vans"],
+    categorias: ["Pantalones", "Adultos", "Vans"],
     imagen: "./assets/img/products/converse-id1.jpg",
-    cantidad: 1,
   },
 
   {
@@ -83,9 +75,8 @@ export const products = [
     nombre: "Chaqueta acolchada con bolsillo",
     precio: 1000,
     marca: "Vans",
-    categoria: ["Camperas", "Adultos", "Vans"],
+    categorias: ["Camperas", "Adultos", "Vans"],
     imagen: "./assets/img/products/converse-id1.jpg",
-    cantidad: 1,
   },
 
   {
@@ -93,9 +84,8 @@ export const products = [
     nombre: "Flannel Woven Top",
     precio: 600,
     marca: "Vans",
-    categoria: ["Camisas", "Niños", "Vans"],
+    categorias: ["Camisas", "Niños", "Vans"],
     imagen: "./assets/img/products/converse-id1.jpg",
-    cantidad: 1,
   },
 ];
 
@@ -116,17 +106,3 @@ export const appState = {
   activeCategory: null,
 };
 // console.log(appState);
-
-export const categories = [
-  "Pantalones",
-  "Zapatillas",
-  "Remeras",
-  "Camisas",
-  "Adultos",
-  "Niños",
-  "Camperas",
-  "Vans",
-  "Converse",
-  "Hombres",
-  "Mujeres",
-];

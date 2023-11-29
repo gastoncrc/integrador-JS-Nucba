@@ -110,6 +110,10 @@
   /* justify-content: center; */
 }
 
+.cart-price-container {
+  display: flex;
+}
+
 .cart-product {
   display: flex;
   width: 100%;
@@ -626,4 +630,16 @@
 
 .hidden {
   display: none;
+}
+
+.btn-category:focus {
+  background-color: #3d71bb;
+}
+
+.btn-inactive {
+  background-color: transparent;
+}
+
+.blocked {
+  cursor: not-allowed;
 }

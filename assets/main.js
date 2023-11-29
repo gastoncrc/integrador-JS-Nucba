@@ -1,18 +1,21 @@
 // IMPORTO EL ARRAY DE PRODUCTOS DESDE OTRO ARCHIVO
 import { products } from "./data.js";
 import { appState } from "./data.js";
-import { categories } from "./data.js";
 
 // TRAIGO LOS ELEMENOS DEL DOM
+
+// PARA LAS CARDS-
 const cardsContainer = document.querySelector(".cards-container");
 const btnNextProducts = document.querySelector(".btn-next-products");
+
 const categoriesList = document.querySelector(".categories-list");
 const btnCart = document.querySelector(".btn-cart");
 const cartToggle = document.querySelector(".cart-container");
 const cartMenu = document.querySelector(".cart-products");
 const counterBubble = document.querySelector(".counter-bubble");
 const btnEmptyCart = document.querySelector(".btn-cart-delete");
-const cartProduct = document.querySelector(".cart-product");
+const cartPrice = document.querySelector(".cart-price");
+const btnBuy = document.querySelector(".btn-cart-buy");
 
 let cart = [];
 // -----------------------------------------------------------------CARDS-----------------------------------------------------
@@ -32,56 +35,49 @@ const renderCard = (product) => {
               <p>${marca}</p>
               <h3>"$ ${precio}"</h3>
               </div>
-              <button class="btn-add-cart" data-id=${id}>Agregar</button>
+              <button class="btn-add-cart" data-id=${id} data-nombre=${nombre} data-precio=${precio} data-imagen=${imagen} data-marca=${marca}>Agregar</button>
           </div>`;
 };
 //---------------------------------------- BUSCA CADA OBJETO DEL ARRAY DE PRODUCTOS
-const createCards = (arrayProducts) => {
-  // arrayProducts.map(renderCard);
-  cardsContainer.innerHTML += arrayProducts.map(renderCard).join("");
+const createCards = (arrayProducts, agregar = false) => {
+  if (agregar) {
+    cardsContainer.innerHTML += arrayProducts.map(renderCard).join("");
+    return;
+  }
+  cardsContainer.innerHTML = arrayProducts.map(renderCard).join("");
 };
 
-// MOSTRAS MAS PRODUCTOS----------------------------
+// MOSTRAR MAS PRODUCTOS----------------------------
 const showNextCards = () => {
   appState.currentIndex += 1;
-  console.log(appState.currentIndex);
   // para sacar el boton al fin del array
-  createCards(appState.products[appState.currentIndex]);
+  createCards(appState.products[appState.currentIndex], true);
   if (appState.currentIndex === appState.indexLimit - 1) {
     btnNextProducts.classList.add("hidden");
   }
 };
 
 // ---------------------------------------------------------------CATEGORIAS ------------------------------------------------------
-// -------------------------------------------ARRAY DE CATEGORIAS
-// RECORRE EL ARRAY DE CATEGORIAS
-const createCategories = () => {
-  categories.map(renderCategories);
-};
-
-// const createCategories = () => {
-//   categories.map((category) => renderCategories(category));
-// };
-
-// RENDERIZAR LA CATEGORIAS
-const renderCategories = (category) => {
-  categoriesList.innerHTML += `
-  <button class="btn-category">${category}</button>`;
-};
 
 // -------------------------------------------FILTRADO POR CATEGORIA
 // FILTRAR POR CATEGORIAS
+const handleCategories = ({ target }) => {
+  const currentCategory = target.dataset.category.toLowerCase();
+  appState.activeCategory = currentCategory;
+  if (appState.activeCategory === "todos") {
+    return createCards(appState.products[0]);
+  }
 
-const filterCategories = (category) => {
-  return products.filter((product) => product.categoria.includes(category));
+  // CATEGORIA FILTRADA COINCIDENTE CON CON LA CATEGORIA SELECCIONADA-
+  const productsFiltred = products.filter((product) =>
+    product.categorias
+      .map((category) => category.toLowerCase())
+      .includes(appState.activeCategory)
+  );
+
+  createCards(productsFiltred);
 };
 
-const handleCategory = (e) => {
-  const textBtn = e.target.textContent;
-  const categorySelected = filterCategories(textBtn);
-  cardsContainer.innerHTML = "";
-  createCards(categorySelected);
-};
 // ----------------------------------------------------------------------CART--------------------------------------------------------
 // ---------------------------------TOGGLE CART
 const togleCart = () => {
@@ -94,24 +90,25 @@ const togleCart = () => {
 
 // --------------------------------AGREGAR AL CARRITO
 const addToCart = (e) => {
-  const idProduct = Number(e.target.dataset.id);
-  const cardSelected = () => {
-    return products.find((product) => product.id === idProduct);
-  };
-  const cartProduct = cardSelected();
-  if (isExistingCartProduct(idProduct)) {
-    addQuantity(cartProduct);
-  } else {
-    cart.push(cartProduct);
-  }
-  cartMenu.innerHTML = "";
+  if (!e.target.classList.contains("btn-add-cart")) return;
+  const product = e.target.dataset;
 
-  createPorductsCart(cart);
-  counterItemsCart(cart);
+  if (isExistingCartProduct(product.id)) {
+    addQuantity(product);
+    createCart(cart);
+    counterItemsCart();
+    showTotal();
+    return;
+  }
+
+  createPorductsCart(product);
+  counterItemsCart();
+  createCart(cart);
+  showTotal();
 };
 
-const createPorductsCart = (cart) => {
-  cart.map(renderCartProduct);
+const createPorductsCart = (product) => {
+  cart = [...cart, { ...product, cantidad: 1 }];
 };
 
 // -------------------------------------------EXISTE EL PRODUCTO
@@ -119,14 +116,32 @@ const isExistingCartProduct = (idProduct) => {
   return cart.some((product) => product.id === idProduct);
 };
 // ---------------------------------------AGREGAR CANTIDAD AL PRODUCTO DEL CART
-const addQuantity = (cartProduct) => {
-  cartProduct.cantidad++;
+const addQuantity = (product) => {
+  cart = cart.map((cartProduct) =>
+    cartProduct.id === product.id
+      ? { ...cartProduct, cantidad: cartProduct.cantidad + 1 }
+      : cartProduct
+  );
+};
+
+// ---------------------------------------DESAGREGAR CANTIDAD AL PRODUCTO DEL CART
+const downQuantity = (product) => {
+  cart = cart.map((cartProduct) =>
+    cartProduct.id === product.id
+      ? { ...cartProduct, cantidad: cartProduct.cantidad - 1 }
+      : cartProduct
+  );
+};
+
+const createCart = (arrayProducts) => {
+  cartMenu.innerHTML = arrayProducts.map(renderCartProduct).join("");
+  disableBtn(btnBuy);
 };
 
 // ---------------------------------RENDERIZAR PROCUTOS EN CART
 const renderCartProduct = (product) => {
   const { id, nombre, precio, marca, imagen, cantidad } = product;
-  cartMenu.innerHTML += `
+  return `
           <div class="cart-product">
              <div class="cart-product-content">
                 <div class="img-cart-container">
@@ -143,88 +158,119 @@ const renderCartProduct = (product) => {
               </div>
               <div class="total-product-container">
                 <div class="plus-minus-container">
-                  <span>-</span>
+                  <button class="btn-minus" data-cantidad=${cantidad} data-id=${id}>-</button>
                   <span>${cantidad}</span>
-                  <span>+</span>
+                  <button class="btn-plus" data-cantidad=${cantidad} data-id=${id}>+</button>
                 </div>
                 <p>subtotal</p>
               </div>
-              <button class="fa fa-trash" data-cantidad="${cantidad}" data-id="${id}">
+              <button class="fa fa-trash" data-cantidad=${cantidad} data-id=${id}>
               </button>
           </div>
                 `;
 };
 
+// ---------------------------------------------------AGREGAR VALOR CON EL BOTON MAS-------------------------------------------
+const btnPlus = ({ target }) => {
+  if (!target.classList.contains("btn-plus")) return;
+  addQuantity(target.dataset);
+  counterItemsCart();
+  showTotal();
+  createCart(cart);
+};
+
+// ---------------------------------------------------DESAGREGAR VALOR CON EL BOTON MAS-------------------------------------------
+const btnMinus = ({ target }) => {
+  if (!target.classList.contains("btn-minus")) return;
+  btnBlocked(target);
+  downQuantity(target.dataset);
+  counterItemsCart();
+  showTotal();
+  createCart(cart);
+};
+
+// ---------------------------------------------------- SACAR CUENTA -----------------------------------------------------
+const showTotal = () => {
+  cartPrice.textContent = cart.reduce(
+    (acc, prod) => acc + prod.cantidad * prod.precio,
+    0
+  );
+};
+
 // ---------------------------------------------------------------BURBUJA CON VALOR---------------------------------------------------
-const counterItemsCart = (cart) => {
-  const lenghtCart = cart.length;
-  counterBubble.textContent = lenghtCart;
+const counterItemsCart = () => {
+  counterBubble.textContent = cart.reduce(
+    (acc, prod) => acc + prod.cantidad,
+    0
+  );
 };
 
 // -----------------------------------------------------------------VACIAR CARRITO----------------------------------------------------
 // ----------------------------------------------VACIAR TODO EL CARRITO
 const emptyCart = () => {
   cart = [];
+  cart.cantidad = 0;
+  showTotal();
   cartMenu.innerHTML = "";
-  counterItemsCart(cart);
+  counterItemsCart();
+  disableBtn(btnBuy);
 };
 
 // ---------------------------------------------VACIAR UN ITEM DEL CARRITO
 
 const deleteProduct = (e) => {
-  const idProductCart = Number(e.target.dataset.id);
-  const quantityProduct = Number(e.target.dataset.cantidad);
-
-  // VER------------------------------------
-  // console.log(quantityCart);
-  const quantityRgfhget = cart.filter(
-    (product) => product.cantidad === quantityProduct
-  );
-
-  // VER -------------------------------------
+  if (!e.target.classList.contains("fa-trash")) return;
+  const product = e.target.dataset;
 
   const productFiltered = cart.filter(
-    (product) => product.id !== idProductCart
+    (productCart) => productCart.id !== product.id
   );
-  cartMenu.innerHTML = "";
+  console.log(productFiltered);
   cart = [...productFiltered];
-  createPorductsCart(cart);
-  counterItemsCart(cart);
+  showTotal();
+  createCart(cart);
+  counterItemsCart();
+};
+
+// ----------------------------------VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER --------------------------------------------------
+
+// ---------------------------------------------FUNCION PARA NO DEJAR IR A NUMERO NEGATIVOS EN EL CARRITO -
+const btnBlocked = (target) => {
+  console.log(target.classList);
+  target.classList.add("blocked");
+};
+
+const disableBtn = (btn) => {
+  console.log(btn.classList);
+  if (cart.length < 1) {
+    btn.classList.add("blocked");
+  } else {
+    btn.classList.remove("blocked");
+  }
 };
 
 //------------------------------------------------------------------- INICIAR ----------------------------------------------------------
 const init = () => {
-  createCategories();
   createCards(appState.products[0]);
   btnNextProducts.addEventListener("click", showNextCards);
 
-  const categoriesListArray = [...categoriesList.children];
-  categoriesListArray.map((btn) =>
-    btn.addEventListener("click", handleCategory)
-  );
+  // CLICK CATEGORIAS PARA FILTRAR
+  categoriesList.addEventListener("click", handleCategories);
+
+  // ABRIR Y CERRAR CART
   btnCart.addEventListener("click", togleCart);
 
-  const cardsArray = [...cardsContainer.children];
-  cardsArray.map((card) =>
-    card.childNodes[5].addEventListener("click", addToCart)
-  );
-  counterItemsCart(cart);
+  // ADD PRODUCTS TO CART --
+  cardsContainer.addEventListener("click", addToCart);
+
+  counterItemsCart(cart.cantidad);
   btnEmptyCart.addEventListener("click", emptyCart);
 
   cartMenu.addEventListener("click", deleteProduct);
+
+  cartMenu.addEventListener("click", btnPlus);
+
+  cartMenu.addEventListener("click", btnMinus);
+  disableBtn(btnBuy);
 };
 init();
-// REVISAR
-// cartMenu.addEventListener("click", (event) => {
-//   if (event.target.classList.contains("fa-trash")) {
-//     deleteProduct(event);
-//   }
-// });
-// const deleteProductArray = [...cartMenu.children];
-// console.log(deleteProductArray);
-// deleteProductArray.map((product) =>
-//   product.childNodes[2].addEventListener("click", deleteProduct)
-// );
-// console.log(cartMenu.childNodes[3]);
-// console.log(deleteProductArray);
-// console.log(cartMenu.children);
