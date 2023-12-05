@@ -134,9 +134,13 @@ const downQuantity = (product) => {
 };
 
 const createCart = (arrayProducts) => {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  if (cart.length === 0) {
+    cartMenu.innerHTML = `<p class="empty-cart-message">El carrito está vacío</p>`;
+    return;
+  }
   cartMenu.innerHTML = arrayProducts.map(renderCartProduct).join("");
   disableBtn(btnBuy);
-  localStorage.setItem("cart", JSON.stringify(cart));
 };
 
 // ---------------------------------RENDERIZAR PROCUTOS EN CART
@@ -215,6 +219,7 @@ const emptyCart = () => {
   cartMenu.innerHTML = "";
   counterItemsCart();
   disableBtn(btnBuy);
+  createCart(cart);
 };
 
 // ---------------------------------------------VACIAR UN ITEM DEL CARRITO

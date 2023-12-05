@@ -645,3 +645,9 @@
 .blocked {
   cursor: not-allowed;
 }
+
+.empty-cart-message {
+  font-size: 12px;
+  font-style: italic;
+  text-align: center;
+}
