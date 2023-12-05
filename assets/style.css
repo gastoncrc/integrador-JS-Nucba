@@ -194,6 +194,7 @@
   height: 40px;
   border-radius: 10px;
   background-color: #4a72a8;
+  cursor: pointer;
 }
 
 .btn-cart-delete {
@@ -201,6 +202,7 @@
   height: 40px;
   border-radius: 10px;
   background-color: crimson;
+  cursor: pointer;
 }
 
 #main {

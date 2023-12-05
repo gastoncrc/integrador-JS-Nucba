@@ -17,7 +17,7 @@ const btnEmptyCart = document.querySelector(".btn-cart-delete");
 const cartPrice = document.querySelector(".cart-price");
 const btnBuy = document.querySelector(".btn-cart-buy");
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 // -----------------------------------------------------------------CARDS-----------------------------------------------------
 // -----------------------------------------ARRAY DE PRODUCTOS
 // ------------------------------------------RENDERIZAR LA CARD
@@ -136,6 +136,7 @@ const downQuantity = (product) => {
 const createCart = (arrayProducts) => {
   cartMenu.innerHTML = arrayProducts.map(renderCartProduct).join("");
   disableBtn(btnBuy);
+  localStorage.setItem("cart", JSON.stringify(cart));
 };
 
 // ---------------------------------RENDERIZAR PROCUTOS EN CART
@@ -225,7 +226,6 @@ const deleteProduct = (e) => {
   const productFiltered = cart.filter(
     (productCart) => productCart.id !== product.id
   );
-  console.log(productFiltered);
   cart = [...productFiltered];
   showTotal();
   createCart(cart);
@@ -236,12 +236,10 @@ const deleteProduct = (e) => {
 
 // ---------------------------------------------FUNCION PARA NO DEJAR IR A NUMERO NEGATIVOS EN EL CARRITO -
 const btnBlocked = (target) => {
-  console.log(target.classList);
   target.classList.add("blocked");
 };
 
 const disableBtn = (btn) => {
-  console.log(btn.classList);
   if (cart.length < 1) {
     btn.classList.add("blocked");
   } else {
@@ -252,6 +250,7 @@ const disableBtn = (btn) => {
 //------------------------------------------------------------------- INICIAR ----------------------------------------------------------
 const init = () => {
   createCards(appState.products[0]);
+  createCart(cart);
   btnNextProducts.addEventListener("click", showNextCards);
 
   // CLICK CATEGORIAS PARA FILTRAR
