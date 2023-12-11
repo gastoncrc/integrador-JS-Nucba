@@ -8,7 +8,7 @@ const phoneInput = document.querySelector("#phone");
 const userData = JSON.parse(localStorage.getItem("user")) || [];
 
 const addLS = () => {
-  localStorage.setItem("user", JSON.stringify(userData));
+  localStorage.setItem("users", JSON.stringify(userData));
 };
 
 // INPUT VACIO

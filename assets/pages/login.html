@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../media.css" />
     <link rel="stylesheet" href="../style-form.css" />
-    <title>Vogue Hub - Registro</title>
+    <title>Vogue Hub - Iniciar Sesión</title>
   </head>
   <body>
     <header id="header">
@@ -26,72 +26,43 @@
     <main id="main">
       <section id="hero">
         <div class="hero-registrer-container">
-          <h1 class="hero-title">Creá tu cuenta</h1>
+          <h1 class="hero-title">Iniciar Sesión</h1>
           <div class="form-info">
-            <form class="form-registrer-container">
-              <!-- INPUT NOMBRE  -->
-              <div class="form-area">
-                <input
-                  type="text"
-                  class="input-registrer"
-                  id="name"
-                  placeholder="Nombre"
-                />
-                <small></small>
-              </div>
-              <!-- INPUT APELLIDO  -->
-
-              <div class="form-area">
-                <input
-                  type="text"
-                  class="input-registrer"
-                  id="surname"
-                  placeholder="Apellido"
-                />
-                <small></small>
-              </div>
+            <form class="form-login-container">
               <!-- INPUT EMAIL  -->
 
               <div class="form-area">
                 <input
                   type="text"
-                  class="input-registrer"
+                  class="input-login"
                   id="email"
                   placeholder="Correo electrónico"
                 />
-                <small></small>
               </div>
               <!-- INPUT PASSW  -->
 
               <div class="form-area">
                 <input
                   type="password"
-                  class="input-registrer"
+                  class="input-login"
                   id="password"
                   placeholder="Contraseña"
                 />
-                <small></small>
+                <small id="login-error"></small>
               </div>
-              <!-- INPUT TELEFONO  -->
-
-              <div class="form-area">
-                <input
-                  type="text"
-                  class="input-registrer"
-                  id="phone"
-                  placeholder="Teléfono"
-                />
-                <small></small>
-              </div>
-              <button>Registrarse</button>
+              <input
+                type="submit"
+                class="login_submit"
+                value="Iniciar Sesión"
+              />
             </form>
             <div class="registrer-question">
-              ¿Ya tenés cuenta? <a href="./login.html">Iniciar Sesión</a>
+              ¿No tenés cuenta? <a href="./registrer.html">Registrate</a>
             </div>
           </div>
         </div>
       </section>
     </main>
-    <script src="../registrer.js" type="module"></script>
+    <script src="../login.js" type="module"></script>
   </body>
 </html>
