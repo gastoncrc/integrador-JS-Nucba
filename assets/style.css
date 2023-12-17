@@ -8,7 +8,7 @@
   color: inherit;
   list-style: none;
   font-family: "poppins", "montserrat", "sanz serif";
-  /* border: solid red 1px; */
+  border: solid red 1px;
 }
 
 :root {
@@ -49,12 +49,24 @@
   gap: 2rem;
 }
 
-.btn-login {
+.navbar-icons {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-login,
+.btn-menu,
+.btn-cart {
   font-size: 1.5rem;
 }
 
+.btn-menu {
+  display: none;
+}
+
 .btn-cart {
-  font-size: 1.5rem;
   position: relative;
   cursor: pointer;
 }
@@ -250,8 +262,8 @@
   max-width: 1200px;
   width: 100%;
   height: 100%;
-  margin-top: 100px;
-  gap: 2rem;
+  margin-top: 60px;
+  gap: 1rem;
   /* background-color: #03f032; */
 }
 
@@ -268,6 +280,7 @@
 
 .hero-top {
   display: flex;
+  width: 100%;
 }
 
 .top-left {
@@ -275,6 +288,8 @@
 }
 
 .hero-title {
+  display: flex;
+  flex-direction: column;
   width: 50%;
   font-size: 3.5rem;
 }
@@ -283,7 +298,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6rem;
+  gap: 5rem;
   height: 30%;
   /* background-color: #83cbf7; */
 }
@@ -295,7 +310,7 @@
 #about-us {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 1rem 1rem 0;
   /* background-color: red; */
   height: 100vh;
@@ -308,7 +323,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  /* padding: 1rem; */
   gap: 2rem;
   max-width: 1200px;
   width: 40%;
@@ -352,6 +367,7 @@
   background-position: center;
   gap: 2rem;
   padding-top: 60px;
+  padding-bottom: 1rem;
 }
 
 .navbar-categories {
@@ -370,8 +386,11 @@
 .categories-list {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 1.5rem;
   max-width: 1200px;
+  padding: 0 0.5rem;
 }
 
 .btn-category {
@@ -396,6 +415,7 @@
   justify-content: center;
   max-width: 1200px;
   gap: 4rem;
+  padding: 1rem;
 }
 
 .card {
@@ -476,6 +496,7 @@
   /* background-color: green; */
   height: 100vh;
   gap: 2rem;
+  padding: 1rem;
   padding-top: 60px;
 }
 
@@ -517,6 +538,11 @@
   height: 70%;
   width: 100%;
   gap: 1.5rem;
+}
+
+.map-container p {
+  align-items: center;
+  text-align: center;
 }
 
 .map-google {
@@ -575,6 +601,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  padding-top: 1rem;
   /* background-color: #03cbf0; */
 }
 

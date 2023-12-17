@@ -1,0 +1,323 @@
+/* =============================== 992 PX ============================= */
+@media (max-width: 992px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 0 0.5rem;
+  }
+
+  .logo-navbar {
+    width: 90px;
+  }
+
+  .navbar-list {
+    display: none;
+  }
+
+  .navbar-icons {
+    height: 60px;
+  }
+
+  .btn-menu {
+    display: flex;
+  }
+
+  /* .navbar-list {
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    background-color: blue;
+    width: 100vw;
+    padding: 1rem;
+  } */
+
+  #hero {
+    padding: 1rem;
+    /* background-image: none; */
+    max-width: 992px;
+    /* height: auto; */
+  }
+
+  .hero-container {
+    gap: 1rem;
+    width: 100%;
+    /* background-image: url(./img/mujer-bajando-escaleras1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; */
+  }
+
+  .hero.top {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-info {
+    display: flex;
+    padding: 1rem;
+    text-align: end;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2.3rem;
+    gap: 2rem;
+  }
+
+  .hero-bottom {
+    gap: 4rem;
+    height: 20%;
+  }
+
+  .brands-logo {
+    width: 80px;
+  }
+
+  #about-us {
+    max-width: 992px;
+  }
+
+  .about-us-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 50%;
+    /* background-color: yellowgreen; */
+  }
+
+  .about-us-title {
+    font-size: 3rem;
+  }
+
+  .about-us-img {
+    width: 300px;
+    border-radius: 300% 0 0 300%;
+    height: 75vh;
+    background-image: url(./img/2534739.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #products {
+    max-width: 992px;
+    gap: 1rem;
+  }
+
+  .categories-list {
+    gap: 1rem;
+    max-width: 992px;
+  }
+
+  #contact-us {
+    max-width: 992px;
+  }
+
+  .contact-us-title {
+    font-size: 3rem;
+  }
+
+  .form-contact-us {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 1rem;
+    /* background-color: #b2383a; */
+  }
+
+  #comments {
+    height: 80px;
+  }
+
+  #footer {
+    max-width: 992px;
+  }
+
+  .footer-container {
+    gap: 1rem;
+  }
+
+  .footer-container-top {
+    gap: 2rem;
+  }
+
+  .net-icon {
+    font-size: 1.5rem;
+  }
+}
+
+/* =============================== 768 PX ============================= */
+@media (max-width: 768px) {
+  #hero {
+    max-width: 768px;
+  }
+
+  .brands-logo {
+    width: 60px;
+  }
+
+  #about-us {
+    max-width: 768px;
+  }
+
+  .about-us-title {
+    font-size: 2.5rem;
+  }
+
+  .about-us-info {
+    font-size: 14px;
+  }
+
+  #products {
+    max-width: 768px;
+  }
+
+  .categories-list {
+    gap: 1rem;
+    max-width: 768px;
+  }
+
+  .btn-category {
+    font-size: 13px;
+  }
+
+  #contact-us {
+    max-width: 768px;
+  }
+
+  .contact-us-title {
+    font-size: 2.5rem;
+  }
+
+  .info-contact-us {
+    gap: 1rem;
+  }
+
+  .map-container {
+    gap: 1rem;
+  }
+
+  #footer {
+    max-width: 768px;
+  }
+}
+
+/* =============================== 576 PX ============================= */
+@media (max-width: 576px) {
+  #hero {
+    max-width: 576px;
+  }
+
+  .hero-bottom {
+    display: none;
+  }
+
+  #about-us {
+    max-width: 576px;
+  }
+
+  /* .about-us-title {
+      font-size: 2.5rem;
+    }
+   */
+  /* .about-us-info {
+      font-size: 14px;
+    }
+   */
+  #products {
+    max-width: 576px;
+  }
+
+  .categories-list {
+    gap: 0.6rem;
+    max-width: 576px;
+  }
+
+  /* .btn-category {
+      font-size: 13px;
+    }
+   */
+  #contact-us {
+    max-width: 576px;
+  }
+
+  .contact-us-title {
+    font-size: 2rem;
+  }
+
+  /* .info-contact-us {
+      gap: 1rem;
+    } */
+
+  /* .map-container {
+      gap: 1rem;
+    } */
+
+  #footer {
+    max-width: 576px;
+  }
+}
+
+/* =============================== 325 PX ============================= */
+@media (max-width: 325px) {
+  #hero {
+    max-width: 325px;
+  }
+
+  .top-left {
+    width: 20%;
+  }
+
+  .hero-bottom {
+    display: none;
+  }
+
+  #about-us {
+    max-width: 325px;
+  }
+
+  /* .about-us-title {
+      font-size: 2.5rem;
+    }
+   */
+  /* .about-us-info {
+      font-size: 14px;
+    }
+   */
+  #products {
+    max-width: 325px;
+  }
+
+  .categories-list {
+    gap: 0.6rem;
+    max-width: 325px;
+  }
+
+  /* .btn-category {
+      font-size: 13px;
+    }
+   */
+  #contact-us {
+    max-width: 325px;
+  }
+
+  .contact-us-title {
+    font-size: 2rem;
+  }
+
+  /* .info-contact-us {
+      gap: 1rem;
+    } */
+
+  /* .map-container {
+      gap: 1rem;
+    } */
+
+  #footer {
+    max-width: 325 px;
+  }
+}
