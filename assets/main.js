@@ -11,11 +11,14 @@ const btnNextProducts = document.querySelector(".btn-next-products");
 const categoriesList = document.querySelector(".categories-list");
 const btnCart = document.querySelector(".btn-cart");
 const cartToggle = document.querySelector(".cart-container");
+const btnMenu = document.querySelector(".btn-menu");
+const menutoggle = document.querySelector(".navbar-list");
 const cartMenu = document.querySelector(".cart-products");
 const counterBubble = document.querySelector(".counter-bubble");
 const btnEmptyCart = document.querySelector(".btn-cart-delete");
 const cartPrice = document.querySelector(".cart-price");
 const btnBuy = document.querySelector(".btn-cart-buy");
+const minusIcon = document.querySelector(".btn-minus");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 // -----------------------------------------------------------------CARDS-----------------------------------------------------
@@ -78,13 +81,23 @@ const handleCategories = ({ target }) => {
   createCards(productsFiltred);
 };
 
+// ----------------------------------------------------------------------MENU--------------------------------------------------------
+// ---------------------------------TOGGLE MENU
+const toggleMenu = () => {
+  if (menutoggle.classList.contains("toggle-close-menu")) {
+    menutoggle.classList.remove("toggle-close-menu");
+  } else {
+    menutoggle.classList.add("toggle-close-menu");
+  }
+};
+
 // ----------------------------------------------------------------------CART--------------------------------------------------------
 // ---------------------------------TOGGLE CART
-const togleCart = () => {
-  if (cartToggle.classList.contains("togle-close-cart")) {
-    cartToggle.classList.remove("togle-close-cart");
+const toggleCart = () => {
+  if (cartToggle.classList.contains("toggle-close-cart")) {
+    cartToggle.classList.remove("toggle-close-cart");
   } else {
-    cartToggle.classList.add("togle-close-cart");
+    cartToggle.classList.add("toggle-close-cart");
   }
 };
 
@@ -127,11 +140,24 @@ const addQuantity = (product) => {
 // ---------------------------------------DESAGREGAR CANTIDAD AL PRODUCTO DEL CART
 const downQuantity = (product) => {
   cart = cart.map((cartProduct) =>
-    cartProduct.id === product.id
-      ? { ...cartProduct, cantidad: cartProduct.cantidad - 1 }
+    cartProduct.cantidad <= 1
+      ? minusIcon.classList.add("blocked")
+      : cartProduct.id === product.id
+      ? {
+          ...cartProduct,
+          cantidad: cartProduct.cantidad - 1,
+        }
       : cartProduct
   );
 };
+
+// const checkQuantity = (cartProduct) => {
+//   if (cartProduct.cantidad < 1) {
+//     minusIcon.classList.add("blocked");
+//   } else {
+//     minusIcon.classList.remove("blocked");
+//   }
+// };
 
 const createCart = (arrayProducts) => {
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -158,7 +184,7 @@ const renderCartProduct = (product) => {
                 <div class="info-cart-container">
                   <h3>${nombre}</h3>
                   <span>${marca}</span>
-                  <p>${precio}</p>
+                  <p>$${precio}</p>
                 </div>
               </div>
               <div class="total-product-container">
@@ -167,9 +193,9 @@ const renderCartProduct = (product) => {
                   <span>${cantidad}</span>
                   <button class="btn-plus" data-cantidad=${cantidad} data-id=${id}>+</button>
                 </div>
-                <p>subtotal</p>
+
               </div>
-              <button class="fa fa-trash" data-cantidad=${cantidad} data-id=${id}>
+              <button class="fa fa-trash trash" data-cantidad=${cantidad} data-id=${id}>
               </button>
           </div>
                 `;
@@ -196,7 +222,7 @@ const btnMinus = ({ target }) => {
 
 // ---------------------------------------------------- SACAR CUENTA -----------------------------------------------------
 const showTotal = () => {
-  cartPrice.textContent = cart.reduce(
+  cartPrice.innerHTML = cart.reduce(
     (acc, prod) => acc + prod.cantidad * prod.precio,
     0
   );
@@ -219,6 +245,7 @@ const emptyCart = () => {
   cartMenu.innerHTML = "";
   counterItemsCart();
   disableBtn(btnBuy);
+  disableBtn(btnEmptyCart);
   createCart(cart);
 };
 
@@ -235,6 +262,7 @@ const deleteProduct = (e) => {
   showTotal();
   createCart(cart);
   counterItemsCart();
+  disableBtn(btnBuy);
 };
 
 // ----------------------------------VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER --------------------------------------------------
@@ -252,17 +280,34 @@ const disableBtn = (btn) => {
   }
 };
 
+const buyProducts = () => {
+  if (cart.length < 1) {
+    btnBuy.classList.add("blocked");
+  } else {
+    btnBuy.classList.remove("blocked");
+    alert("Su compra ha sido efectuada correctamente");
+    cart = [];
+    counterItemsCart();
+    showTotal();
+    createCart(cart);
+  }
+};
+
 //------------------------------------------------------------------- INICIAR ----------------------------------------------------------
 const init = () => {
   createCards(appState.products[0]);
   createCart(cart);
+  showTotal();
   btnNextProducts.addEventListener("click", showNextCards);
 
   // CLICK CATEGORIAS PARA FILTRAR
   categoriesList.addEventListener("click", handleCategories);
 
   // ABRIR Y CERRAR CART
-  btnCart.addEventListener("click", togleCart);
+  btnCart.addEventListener("click", toggleCart);
+
+  // ABRIR Y CERRAR MENU
+  btnMenu.addEventListener("click", toggleMenu);
 
   // ADD PRODUCTS TO CART --
   cardsContainer.addEventListener("click", addToCart);
@@ -273,6 +318,8 @@ const init = () => {
   cartMenu.addEventListener("click", deleteProduct);
 
   cartMenu.addEventListener("click", btnPlus);
+
+  btnBuy.addEventListener("click", buyProducts);
 
   cartMenu.addEventListener("click", btnMinus);
   disableBtn(btnBuy);

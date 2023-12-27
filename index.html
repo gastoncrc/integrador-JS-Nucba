@@ -20,7 +20,7 @@
         <a href="#hero" class="link-logo-navbar"
           ><img src="./assets/img/VH.png" alt="logo-vh" class="logo-navbar"
         /></a>
-        <ul class="navbar-list">
+        <ul class="navbar-list toggle-close-menu">
           <li><a href="#products">Categorías</a></li>
           <li><a href="#about-us">Nosotros</a></li>
           <li><a href="#contact-us">Contacto</a></li>
@@ -39,7 +39,7 @@
           </li>
         </ul>
         <!-- ------------------ -->
-        <div class="cart-container togle-close-cart">
+        <div class="cart-container toggle-close-cart">
           <h2>Carrito</h2>
           <div class="cart-products">
             <!-- ACA VAN LOS PRODUCTOS -->
@@ -64,7 +64,6 @@
                   <span>5</span>
                   <span>+</span>
                 </div>
-                <p>subtotal</p>
               </div>
               <div class="product-delete">
                 <button>X</button>
@@ -75,10 +74,10 @@
           <div class="cart-total">
             <p>Total</p>
             <p class="cart-price-container">
-              <span class="cart-price">$0</span>
+              $<span class="cart-price"></span>
             </p>
           </div>
-          <button class="btn-cart-buy" disabled>Comprar</button>
+          <button class="btn-cart-buy">Comprar</button>
           <button class="btn-cart-delete">Vaciar</button>
         </div>
         <!-- ----------------------------- -->
@@ -89,7 +88,13 @@
         <div class="hero-container">
           <div class="hero-info">
             <div class="hero-top">
-              <div class="top-left"></div>
+              <div class="top-left">
+                <img
+                  src="./assets/img/VH.png"
+                  alt="vogue_logo"
+                  class="top-left-img"
+                />
+              </div>
               <h1 class="hero-title">
                 <span class="title-span-top">PISANDO ESTILO,</span>
                 <span class="title-span-bottom">CAMINANDO LA CIUDAD</span>
